@@ -1,0 +1,26 @@
+# Core Computer Vision & AI Detection
+ultralytics>=8.0.0
+opencv-python-headless>=4.8.0
+numpy>=1.23.0
+torch>=2.0.0
+
+# Tracking & Analytics
+scipy>=1.10.0
+filterpy>=1.4.5
+lapx>=0.5.5
+
+# Configuration & Storage
+pyyaml>=6.0
+pydantic>=2.0.0
+
+# Web Dashboard & Streaming
+flask>=2.3.0
+flask-cors>=4.0.0
+
+# HTTP & Camera Bridge Communication
+requests>=2.31.0
+urllib3>=2.0.0
+
+# Testing & Linting
+pytest>=7.4.0
+pytest-cov>=4.1.0

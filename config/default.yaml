@@ -1,0 +1,50 @@
+# AI Patrolling Drone — Default Configuration
+
+pipeline:
+  run_mode: "recorded"  # Options: recorded, webcam, sim
+  source_path: "data/samples/test.mp4"
+  camera_index: 0
+  sim_bridge_url: "http://127.0.0.1:8081"
+  reconnect_retries: 5
+  reconnect_backoff_sec: 1.0
+
+detector:
+  model_name: "yolov8n.pt"
+  device: "auto"  # auto, cpu, cuda
+  confidence_threshold: 0.35
+  target_classes:
+    - person
+    - car
+    - truck
+    - bus
+    - motorcycle
+    - bicycle
+
+tracker:
+  tracker_type: "bytetrack"
+  track_high_thresh: 0.5
+  track_low_thresh: 0.1
+  new_track_thresh: 0.6
+  track_buffer: 30
+  match_thresh: 0.8
+
+zones:
+  # Patrol yard default: approx 60x40m scale
+  restricted_zones:
+    - name: "Zone_A"
+      polygon: [[100, 100], [500, 100], [500, 400], [100, 400]]
+      alert_on: ["person", "car"]
+
+storage:
+  db_path: "data/patrol.db"
+  runs_dir: "data/runs"
+
+recording:
+  save_raw: true
+  save_annotated: true
+  fps: 30
+
+dashboard:
+  host: "0.0.0.0"
+  port: 5000
+  debug: false
